@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>twinc | {% block title %}{% endblock %}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <style>
+      #navbar_phone {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #333; /* Set your desired background color */
+        color: white; /* Set your desired text color */
+        padding: 10px; /* Adjust padding as needed */
+        text-align: center;
+        display: none; /* Hide both navbars by default */
+      }
+      #navbar_laptop {
+        bottom: 0;
+        width: 100%;
+        background-color: #333; /* Set your desired background color */
+        color: white; /* Set your desired text color */
+        padding: 10px; /* Adjust padding as needed */
+        text-align: center;
+        display: none; /* Hide both navbars by default */
+      }
+
+      /* Show the navbar_phone when the screen width is less than or equal to 799px */
+      @media (max-width: 799px) {
+        #navbar_phone {
+          display: block;
+        }
+      }
+
+      /* Show the navbar_laptop when the screen width is greater than or equal to 800px */
+      @media (min-width: 800px) {
+        #navbar_laptop {
+          display: block;
+        }
+      }
+      body {
+        padding-top: 70px;
+        padding-bottom: 50px;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'style/styles.css' %}" />
+  </head>
+  <body>
+    <nav
+      class="navbar fixed-top navbar-expand-lg bg-body-tertiary"
+      data-bs-theme="dark"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img
+            src="{% static 'style/icons8-t-67.png' %}"
+            alt="Logo"
+            width="33"
+            height="27"
+            class="d-inline-block align-text-top"
+            style="margin-right: 5%"
+          />twinc</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url  'Home' %}"
+              >Home</a
+            >
+
+            {% if user.is_authenticated %}
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'account' username=request.user.username %}"
+              >Account</a
+            >
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div
+      class="container"
+      style="
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      {% block content %} {% endblock %}
+    </div>
+    <br />
+
+    <nav
+      class="navbar fixed-bottom bg-body-tertiary"
+      data-bs-theme="dark"
+      id="navbar_phone"
+    >
+      <div class="container-fluid">
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <div
+            style="
+              width: 35px;
+              height: 100%;
+              border-radius: 50%;
+              overflow: hidden;
+              margin: 0 6%;
+            "
+          >
+            <a href="{% url  'Home' %}"
+              ><img
+                src="{% static 'style/icons8-smart-home-48.png' %}"
+                class="rounded float-top img-fluid"
+                alt="..."
+                style="width: 100%; height: 100%; object-fit: cover"
+            /></a>
+          </div>
+          <div
+            style="
+              width: 35px;
+              height: 100%;
+              border-radius: 50%;
+              overflow: hidden;
+              margin: 0 6%;
+            "
+          >
+            <a href="#">
+              <img
+                src="{% static 'style/icons8-more-48.png' %}"
+                class="rounded float-top img-fluid"
+                alt="..."
+                style="width: 100%; height: 100%; object-fit: cover"
+            /></a>
+          </div>
+          <div
+            style="
+              width: 35px;
+              height: 100%;
+              border-radius: 50%;
+              overflow: hidden;
+              margin: 0 6%;
+            "
+          >
+            <a href="#">
+              <img
+                src="{% static 'style/icons8-proactivity-48.png' %}"
+                class="rounded float-top img-fluid"
+                alt="..."
+                style="width: 100%; height: 100%; object-fit: cover"
+            /></a>
+          </div>
+
+          {% if user.is_authenticated %}
+          <div
+            style="
+              width: 35px;
+              height: 100%;
+              border-radius: 50%;
+              overflow: hidden;
+              margin: 0 6%;
+            "
+          >
+            <a href="{% url 'account' username=request.user.username %}">
+              <img
+                src="{% static 'style/icons8-account-48.png' %}"
+                class="rounded float-top img-fluid"
+                alt="..."
+                style="width: 100%; height: 100%; object-fit: cover"
+            /></a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="card"
+      style="width: 100%"
+      data-bs-theme="dark"
+      id="navbar_laptop"
+    >
+      <div class="card-body">
+        <div class="contact-info">
+          <h3>Contact Us</h3>
+          <p>
+            <img
+              src="{% static 'style/icons8-email-90.png' %}"
+              alt="Github"
+              style="margin-right: 2%; margin-left: 3%"
+              width="50px"
+            />programmerKenya@gmail.com
+          </p>
+          <p>
+            <img
+              src="{% static 'style/icons8-address-64.png' %}"
+              alt="Github"
+              width="50px"
+              style="margin-right: 2%; margin-left: 3%"
+            />
+            Nairobi City, Kenya
+          </p>
+          <p>
+            <img
+              src="{% static 'style/icons8-phone-100.png' %}"
+              alt="Github"
+              width="50px"
+              style="margin-right: 2%; margin-left: 3%"
+            />
+            0780956474
+          </p>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Victor Production. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

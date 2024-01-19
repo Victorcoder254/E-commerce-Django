@@ -1,0 +1,218 @@
+{% extends 'vendor/base.html' %}{% block title %}List Product{% endblock %}<br />
+{%block content %}
+<div class="card" id="CSignup">
+  <div class="card-body">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="input-group">
+        <span class="input-group-text">cover_image</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="cover_image"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_detail_image_1</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_detail_image_1"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_detail_image_2</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_detail_image_2"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_detail_image_3</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_detail_image_3"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_detail_image_4</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_detail_image_4"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_detail_image_5</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_detail_image_5"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_image_color_1</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_image_color_1"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_image_color_2</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_image_color_2"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_image_color_3</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_image_color_3"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_image_color_4</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_image_color_4"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_sizechart_image</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="product_sizechart_image"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">price</span>
+        <input
+          type="text"
+          aria-label="Last name"
+          class="form-control"
+          name="price"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group-label-checkbox">
+        <label class="input-group-text" for="id_instock">In Stock</label>
+        <input type="checkbox" id="id_instock" name="instock" required />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_name</span>
+        <textarea
+          class="form-control auto-height"
+          name="product_name"
+          required
+          rows="1"
+          style="resize: none"
+        ></textarea>
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">description</span>
+        <textarea
+          class="form-control auto-height"
+          name="description"
+          required
+          rows="1"
+          style="resize: none"
+        ></textarea>
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">product_details</span>
+        <textarea
+          class="form-control auto-height"
+          name="product_details"
+          required
+          rows="1"
+          style="resize: none"
+        ></textarea>
+      </div>
+      <br />
+
+      <!-- Product Category Dropdown -->
+      <div class="input-group">
+        <label class="input-group-text" for="id_product_category"
+          >Product Category:</label
+        >
+        <select
+          class="form-select"
+          name="product_category"
+          id="id_product_category"
+          required
+        >
+          {% for category, subcategories in product_categories %}
+          <optgroup label="{{ category }}">
+            {% for subcategory_code, subcategory_name in subcategories %}
+            <option value="{{ subcategory_code }}">
+              {{ subcategory_name }}
+            </option>
+            {% endfor %}
+          </optgroup>
+          {% endfor %}
+        </select>
+      </div>
+
+      <br />
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+      <br />
+    </form>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  // Automatically resize the textarea as the user types
+  $(document).on("input", "textarea.auto-height", function () {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+  });
+</script>
+{% endblock %}

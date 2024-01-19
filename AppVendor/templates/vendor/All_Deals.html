@@ -1,0 +1,37 @@
+{%extends 'vendor/base.html'%}{% block title %}Home{% endblock %}<br />
+{%block content%}{% load static %}
+<div class="containerA" style="width: 100%">
+  <div class="card text-center" id="cardAccount">
+    <div class="card-body" style="display: block">
+      <h1>Discounts</h1>
+      {% for deal in deals %}
+      <div class="card-header">
+        <p>Start-Date: {{ deal.start_date }}</p>
+        <p>End-Date: {{ deal.end_date }}</p>
+
+        {% if deal.discounted_price == '0' %}
+        <p>Name of BuyOneGet: {{ deal.name_buy_get_one }}</p>
+        {% if deal.image_buy_get_one %}
+        <p>
+          Image of BuyOneGet:
+          <img
+            src="{{ deal.image_buy_get_one.url }}"
+            alt="Buy One Get One Image"
+          />
+        </p>
+        {% endif %} {% else %}
+        <p>Discount Price: {{ deal.discounted_price }}</p>
+        <p>Previous Price: {{ deal.product.price }}</p>
+        <p>Percentage-Off: {{ deal.percentage_discount }}%</p>
+        {% endif %}
+
+        <p>Date-Posted: {{ deal.date_created }}</p>
+        <p>Vendor: {{ deal.vendor.username }}</p>
+        <p>Product-Name: {{ deal.product.product_name }}</p>
+        <p>Product-Category: {{ deal.product.get_product_category_display }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

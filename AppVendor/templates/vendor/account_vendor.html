@@ -1,0 +1,93 @@
+{%extends 'vendor/base.html'%} {%block content%}{% block title %}Vendor
+Account{% endblock %}{% load static %}
+<div class="containerA" style="width: 100%">
+  <div class="card text-center" id="cardAccount">
+    <div class="card-body" style="display: block">
+      <div style="display: block; flex-direction: column">
+        {% if vendorprofile.business_logo %}
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <div
+            class="image-container"
+            style="
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              overflow: hidden;
+            "
+          >
+            <img
+              src="{{ vendorprofile.business_logo.url }}"
+              class="rounded float-top img-fluid"
+              alt="..."
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                background-color: black;
+              "
+            />
+          </div>
+          <span
+            ><small style="font-size: medium"
+              >{{vendorprofile.vendor.username}}</small
+            ></span
+          >
+        </div>
+        {% else %}
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <div
+            class="image-container"
+            style="width: 80px; height: 80px; border-radius: 50%"
+          >
+            <img
+              src="{%static 'style/icons8-person-64.png'%}"
+              class="rounded float-top img-fluid"
+              alt="..."
+              style="width: 200px; height: auto; display: block"
+            />
+          </div>
+        </div>
+        {% endif %}
+        <div
+          class="contain"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <div class="card" style="width: 18rem">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a href="{% url 'editVendor_Profile' %}"
+                  >Edit profile Picture</a
+                >
+              </li>
+              <li class="list-group-item">
+                <a href="{% url 'delete_Vendoraccount' %}"
+                  >delete your account</a
+                >
+              </li>
+              <li class="list-group-item">
+                <a href="{% url 'logout_vendor' %}">logout from here</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{%extends 'authenticate/base.html'%}{%block title%}Account{% endblock%}
+<br />{%block content%}{% load static %}
+<div class="containerA" style="width: 100%">
+  <div class="card text-center" id="cardAccount">
+    <div class="card-body" style="display: block">
+      <div style="display: block; flex-direction: column">
+        {% if userprofile.profile_image %}
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <div
+            class="image-container"
+            style="
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              overflow: hidden;
+            "
+          >
+            <img
+              src="{{ userprofile.profile_image.url }}"
+              class="rounded float-top img-fluid"
+              alt="..."
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                background-color: black;
+              "
+            />
+          </div>
+          <span
+            ><small style="font-size: medium"
+              >{{userprofile.user.username}}</small
+            ></span
+          >
+        </div>
+        {% else %}
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <div
+            class="image-container"
+            style="width: 80px; height: 80px; border-radius: 50%"
+          >
+            <img
+              src="{%static 'style/icons8-person-64.png'%}"
+              class="rounded float-top img-fluid"
+              alt="..."
+              style="width: 200px; height: auto; display: block"
+            />
+          </div>
+        </div>
+        {% endif %}
+        <div
+          class="contain"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <div class="card" style="width: 18rem">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a href="{% url 'editProfile' %}">Edit profile Picture</a>
+              </li>
+              <li class="list-group-item">
+                <a href="{% url 'delete' %}">delete your account</a>
+              </li>
+              <li class="list-group-item">
+                <a href="{% url 'logout' %}">logout from here</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

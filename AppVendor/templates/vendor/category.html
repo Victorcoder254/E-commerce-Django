@@ -1,0 +1,28 @@
+{%extends 'vendor/base.html'%}{% block title %}Home{% endblock %}<br />
+{%block content%}{% load static %}
+<div class="containerA" style="width: 100%">
+  <div class="card text-center" id="cardAccount">
+    <div class="card-body" style="display: block">
+      <h1>Dashboard</h1>
+      {% for product in products %}
+      <div class="card-header">
+        <p>Price: {{product.price}}</p>
+        <p>Name: {{product.product_name}}</p>
+        <p>Description: {{product.description}}</p>
+        {% if product.in_stock %}
+        <p>Instock: Yes</p>
+        {% else %}
+        <p>Instock: No</p>
+        {% endif %}
+        <p>Vendor: {{product.vendoruser.username}}</p>
+        <p>Details: {{product.product_details}}</p>
+        <p>Category: {{product.get_product_category_display }}</p>
+      </div>
+      {%endfor%}
+      <a href="{% url 'list_product' username=request.user.username %}"
+        >Add Product</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}

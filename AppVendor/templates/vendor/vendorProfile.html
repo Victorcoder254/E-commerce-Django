@@ -1,0 +1,70 @@
+{% extends 'vendor/base.html' %}{% block title %}Create Profile{% endblock %}<br />
+{%block content %}
+<div class="card" id="CSignup">
+  <div class="card-body">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="input-group">
+        <span class="input-group-text">business_logo</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="business_logo"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">business_name</span>
+        <input
+          type="text"
+          aria-label="Last name"
+          class="form-control"
+          name="business_name"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">contact_info</span>
+        <input
+          type="text"
+          aria-label="Last name"
+          class="form-control"
+          name="contact_info"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">business_address</span>
+        <input
+          type="text"
+          aria-label="Last name"
+          class="form-control"
+          name="business_address"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">business_permit</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="business_permit"
+          required
+        />
+      </div>
+      <br />
+      <br />
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+      <br />
+    </form>
+  </div>
+</div>
+{% endblock %}

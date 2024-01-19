@@ -1,0 +1,81 @@
+{% extends 'authenticate/base.html' %}{% block title %}Signup{% endblock %}<br />
+{% block content %}
+<div class="card" id="CSignup">
+  <div class="card-body">
+    <div
+      class="div"
+      style="font-size: large; text-align: center; margin: 2% auto"
+    >
+      <span>Signup</span>
+    </div>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="input-group">
+        <span class="input-group-text">Firstname</span>
+        <input
+          type="text"
+          aria-label="First name"
+          class="form-control"
+          name="firstname"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">Lastname</span>
+        <input
+          type="text"
+          aria-label="Last name"
+          class="form-control"
+          name="lastname"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">Username</span>
+        <input
+          type="text"
+          aria-label="First name"
+          class="form-control"
+          name="username"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">Email</span>
+        <input
+          type="email"
+          aria-label="Email"
+          class="form-control"
+          name="email"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">Password</span>
+        <input
+          type="password"
+          aria-label="Password"
+          class="form-control"
+          name="password"
+          required
+        />
+      </div>
+      <br />
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+      <br />
+    </form>
+    <span
+      ><small
+        >Login here if already registered
+        <a href="{% url 'login' %}">Login</a></small
+      ></span
+    >
+  </div>
+</div>
+{% endblock %}

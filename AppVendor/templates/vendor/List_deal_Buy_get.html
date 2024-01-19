@@ -1,0 +1,71 @@
+{% extends 'vendor/base.html' %}{% block title %}List Product{% endblock %}<br />
+{%block content %}
+<div class="card" id="CSignup">
+  <div class="card-body">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="input-group">
+        <span class="input-group-text">start_date</span>
+        <input
+          type="date"
+          aria-label="Last name"
+          class="form-control"
+          name="start_date"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">end_date</span>
+        <input
+          type="date"
+          aria-label="Last name"
+          class="form-control"
+          name="end_date"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">name_buy_get_one</span>
+        <input
+          type="text"
+          aria-label="name_buy_get_one"
+          class="form-control"
+          name="name_buy_get_one"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-text">image_buy_get_one</span>
+        <input
+          type="file"
+          aria-label="image_buy_get_one"
+          class="form-control"
+          name="image_buy_get_one"
+          required
+        />
+      </div>
+      <br />
+
+      <!-- Product Category Dropdown -->
+
+      <br />
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+      <br />
+    </form>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  // Automatically resize the textarea as the user types
+  $(document).on("input", "textarea.auto-height", function () {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+  });
+</script>
+{% endblock %}

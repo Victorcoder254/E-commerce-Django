@@ -1,0 +1,37 @@
+{%extends 'vendor/base.html'%} {%block content%}{% block title %}Vendor
+Account{% endblock %}{% load static %}
+<div class="containerA" style="width: 100%">
+  <div class="card text-center" id="cardAccount">
+    <div class="card-body" style="display: block">
+      <div style="display: block; flex-direction: column">
+        <div
+          class="contain"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <div class="card" style="width: 18rem">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="div">
+                  <a
+                    href="{% url 'vendor_create_deal_AmountOff' pk=product.pk username=request.user.username %}"
+                    >Amount Off Product</a
+                  >
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="div">
+                  <a
+                    href="{% url 'vendor_create_deal_Buy_Get' pk=product.pk username=request.user.username %}"
+                    >Buy one get one</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

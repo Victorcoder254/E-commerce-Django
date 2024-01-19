@@ -1,0 +1,89 @@
+{% extends 'authenticate/base.html' %}{%block title%}Create-Profile{% endblock%}
+<br />{%load static%}{% block content %}
+<div class="card" id="CSignup">
+  <div class="card-body">
+    <div
+      class="div"
+      style="font-size: large; text-align: center; margin: 2% auto"
+    >
+      {% if userprofile.profile_image %}
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div
+          class="image-container"
+          style="
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+          "
+        >
+          <img
+            src="{{ userprofile.profile_image.url }}"
+            class="rounded float-top img-fluid"
+            alt="..."
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              background-color: black;
+            "
+          />
+        </div>
+        <span
+          ><small style="font-size: medium"
+            >{{userprofile.user.username}}</small
+          ></span
+        >
+      </div>
+      {% else %}
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div
+          class="image-container"
+          style="width: 80px; height: 80px; border-radius: 50%"
+        >
+          <img
+            src="{% static 'style/icons8-person-64.png'%}"
+            class="rounded float-top img-fluid"
+            alt="..."
+            style="width: 200px; height: auto; display: block"
+          />
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="input-group">
+        <span class="input-group-text">Photo</span>
+        <input
+          type="file"
+          aria-label="Last name"
+          class="form-control"
+          name="profile_image"
+          required
+        />
+      </div>
+      <br />
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+      <br />
+    </form>
+  </div>
+</div>
+{% endblock %}

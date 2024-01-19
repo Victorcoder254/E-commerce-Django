@@ -1,0 +1,335 @@
+{%extends 'vendor/base.html'%}{% block title %}Vendor-Dashboard{% endblock %}<br />
+{%block content%}{% load static %}
+<div class="main_dashboard_container">
+  <div class="navigation_categories_shortcuts">
+    <div class="child_navigation_categories_shortcuts">
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne"
+              aria-expanded="false"
+              aria-controls="flush-collapseOne"
+            >
+              Get Started
+            </button>
+          </h2>
+          <div
+            id="flush-collapseOne"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <div class="card" style="width: 18rem">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'list_product' username=request.user.username %}"
+                      >Create Listing</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_product_pk_for_deal' username=request.user.username %}"
+                      >Create Deal</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo"
+              aria-expanded="false"
+              aria-controls="flush-collapseTwo"
+            >
+              Manage Listings
+            </button>
+          </h2>
+          <div
+            id="flush-collapseTwo"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <div class="card" style="width: 18rem">
+                <div class="div">
+                  <p style="display: flex; justify-content: center">
+                    Category-Accessories
+                  </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='clothes' username=request.user.username %}"
+                      >clothes</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='shoes' username=request.user.username %}"
+                      >shoes</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='jewelry' username=request.user.username %}"
+                      >jewelry</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='handbags' username=request.user.username  %}"
+                      >handbags</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='clothes'  username=request.user.username %}"
+                      >fancy</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='fragnance'  username=request.user.username %}"
+                      >fragnance</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <br />
+              <div class="card" style="width: 18rem">
+                <div class="div">
+                  <p style="display: flex; justify-content: center">
+                    Category-Beauty_Products
+                  </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='skincare' username=request.user.username %}"
+                      >skincare</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='makeup' username=request.user.username %}"
+                      >makeup</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='haircare' username=request.user.username %}"
+                      >haircare</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_by_category' product_category='nailcare' username=request.user.username  %}"
+                      >nailcare</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseThree"
+              aria-expanded="false"
+              aria-controls="flush-collapseThree"
+            >
+              Your Orders
+            </button>
+          </h2>
+          <div
+            id="flush-collapseThree"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <div class="card" style="width: 18rem">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseFour"
+              aria-expanded="false"
+              aria-controls="flush-collapseFour"
+            >
+              Manage Customers
+            </button>
+          </h2>
+          <div
+            id="flush-collapseFour"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <div class="card" style="width: 18rem">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">A first item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseFive"
+              aria-expanded="false"
+              aria-controls="flush-collapseFive"
+            >
+              Analytics
+            </button>
+          </h2>
+          <div
+            id="flush-collapseFive"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <div class="card" style="width: 18rem">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">A first item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseSix"
+              aria-expanded="false"
+              aria-controls="flush-collapseSix"
+            >
+              Manage Deals
+            </button>
+          </h2>
+          <div
+            id="flush-collapseSix"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <div class="card" style="width: 18rem">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <a href='{% url "get_all_deals" request.user.username %}'
+                      >All Deals</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{% url 'get_product_pk_for_deal' username=request.user.username %}"
+                      >Create Deal</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="dashboard_menu">
+    <div class="child_dashboard_menu">
+      <div class="card" id="yourlistings_dashboard">
+        <div class="card-body">
+          <h5 class="card-title">Recent Listings</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            See all recent listings
+          </h6>
+          <p class="card-text">
+            See all your listings from here and review or edit them on the go.
+          </p>
+          <a
+            href="{% url 'get_all_recent_listings_vendor' username=request.user.username %}"
+            class="card-link"
+            >Get Going</a
+          >
+        </div>
+      </div>
+      <div class="card" id="yourAnalytics_dashboard">
+        <div class="card-body">
+          <h5 class="card-title">Analytics</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+      <div class="card" id="yourDiscounts_dashboard">
+        <div class="card-body">
+          <h5 class="card-title">Your Discounts</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+      <div class="card" id="yourOrders_dashboard">
+        <div class="card-body">
+          <h5 class="card-title">Your Orders</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
